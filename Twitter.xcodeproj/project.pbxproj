@@ -80,7 +80,7 @@
 				ED998427226D7EAF004BC7E4 /* Storyboards */,
 				ED998426226D7EA7004BC7E4 /* Helpers */,
 				ED998425226D7E9D004BC7E4 /* Controllers */,
-				ED998424226D7E91004BC7E4 /* Views */,
+				ED998424226D7E91004BC7E4 /* Cells */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -93,12 +93,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ED998424226D7E91004BC7E4 /* Views */ = {
+		ED998424226D7E91004BC7E4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				ED99842C226DB099004BC7E4 /* TweetCell.swift */,
 			);
-			path = Views;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		ED998425226D7E9D004BC7E4 /* Controllers */ = {

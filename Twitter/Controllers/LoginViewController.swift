@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,6 +24,7 @@ class LoginViewController: UIViewController {
             self.performSegue(withIdentifier: "loginToHome" , sender: self)
             }
         }
+        loginButton.layer.cornerRadius = 15
     }
     
     @IBAction func loginButton(_ sender: UIButton) {

@@ -30,19 +30,43 @@ class HomeTableViewController: UITableViewController {
     @objc func loadTweets() {
         let tweetsURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets = 20
-        let title = "Tweets loaded"
-        let message = "\(numberOfTweets!) tweets have been loaded"
+//        let title = "Tweets loaded"
+//        let message = "\(numberOfTweets!) tweets have been loaded"
         let myParams = ["count": numberOfTweets] as [String:Any]
         
         TwitterAPICaller.client?.getDictionariesRequest(url: tweetsURL, parameters: myParams, success: { (tweets: [NSDictionary]) in
             self.tweetArray = tweets as! [[String : Any]]
             
-            self.createAlert(title: title, message: message)
+            for tweet in self.tweetArray {
+                let t = tweet
+    //            let mediaDict = t["media"] as! [String: Any]
+//                print(self.tweetArray)
+//                print(self.tweetArray[15].keys)
+//                print("\n\n")
+//                print(t["entities"])
+                let entities = t["entities"] as! [String: Any]
+//                print("\n\n")
+//                print(entities.keys)
+//                print(entities["urls"] as! NSArray)
+                let urls = (entities["urls"] as! [Any])
+                print(urls)
+                if urls.count > 0 {
+                    print("HERE")
+                    print(urls[0])
+                    let url1 = urls[0] as! [String: Any]
+                    print(url1["display_url"])
+                }
+            }
+//            print(t["media"])
+
+//            let displayUrl = mediaDict["display_url"]!
+//            print(displayUrl)
+//            self.createAlert(title: title, message: message)
             
             self.tableView.reloadData()
             self.myRefreshControl.endRefreshing()
         }, failure: { (Error) in
-            let title  = "Error"
+            let title  = Error.localizedDescription
             let message = "Unable to load tweets. Please check your network connection and try again"
             self.createAlert(title: title, message: message)
             print("Could not load Tweets")
@@ -72,7 +96,10 @@ class HomeTableViewController: UITableViewController {
         
         cell.userNameLabel.text = user["name"] as? String
         cell.tweetContentLabel.text = tweetArray[indexPath.row]["text"] as? String
-        
+        cell.handleLabel.text = "@\(user["screen_name"]!)"
+        cell.retweetCountLabel.text = String(tweetArray[indexPath.row]["retweet_count"] as! Int)
+        cell.favoriteCountLabel.text = String(tweetArray[indexPath.row]["favorite_count"] as! Int)
+//        print(tweetArray[indexPath.row]["favorite_count"])
         let urlString = user["profile_image_url_https"] as! String
         let url = URL(string: urlString)
         cell.profileImage.af_setImage(withURL: url!)
@@ -99,7 +126,7 @@ class HomeTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "Yuhh", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
             alert.dismiss(animated: true, completion: nil)
             print("done")
         }))
