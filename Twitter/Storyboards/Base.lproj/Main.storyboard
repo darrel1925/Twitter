@@ -140,6 +140,10 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cuW-VE-sVi" firstAttribute="leading" relation="lessThanOrEqual" secondItem="uGK-Mj-jZX" secondAttribute="trailing" constant="51" id="5m2-VX-0Hc"/>
+                                                <constraint firstItem="o62-f0-7Vl" firstAttribute="leading" relation="lessThanOrEqual" secondItem="cuW-VE-sVi" secondAttribute="trailing" constant="51" id="cDF-DA-B9y"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>

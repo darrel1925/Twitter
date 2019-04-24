@@ -37,31 +37,31 @@ class HomeTableViewController: UITableViewController {
         TwitterAPICaller.client?.getDictionariesRequest(url: tweetsURL, parameters: myParams, success: { (tweets: [NSDictionary]) in
             self.tweetArray = tweets as! [[String : Any]]
             
-            for tweet in self.tweetArray {
-                let t = tweet
-    //            let mediaDict = t["media"] as! [String: Any]
-//                print(self.tweetArray)
-//                print(self.tweetArray[15].keys)
-//                print("\n\n")
-//                print(t["entities"])
-                let entities = t["entities"] as! [String: Any]
-//                print("\n\n")
-//                print(entities.keys)
-//                print(entities["urls"] as! NSArray)
-                let urls = (entities["urls"] as! [Any])
-                print(urls)
-                if urls.count > 0 {
-                    print("HERE")
-                    print(urls[0])
-                    let url1 = urls[0] as! [String: Any]
-                    print(url1["display_url"])
-                }
-            }
-//            print(t["media"])
-
-//            let displayUrl = mediaDict["display_url"]!
-//            print(displayUrl)
-//            self.createAlert(title: title, message: message)
+//            for tweet in self.tweetArray {
+//                let t = tweet
+//    //            let mediaDict = t["media"] as! [String: Any]
+////                print(self.tweetArray)
+////                print(self.tweetArray[15].keys)
+////                print("\n\n")
+////                print(t["entities"])
+//                let entities = t["entities"] as! [String: Any]
+////                print("\n\n")
+////                print(entities.keys)
+////                print(entities["urls"] as! NSArray)
+//                let urls = (entities["urls"] as! [Any])
+//                print(urls)
+//                if urls.count > 0 {
+//                    print("HERE")
+//                    print(urls[0])
+//                    let url1 = urls[0] as! [String: Any]
+//                    print(url1["display_url"] as? String)
+//                }
+//            }
+////            print(t["media"])
+//
+////            let displayUrl = mediaDict["display_url"]!
+////            print(displayUrl)
+////            self.createAlert(title: title, message: message)
             
             self.tableView.reloadData()
             self.myRefreshControl.endRefreshing()
@@ -99,7 +99,9 @@ class HomeTableViewController: UITableViewController {
         cell.handleLabel.text = "@\(user["screen_name"]!)"
         cell.retweetCountLabel.text = String(tweetArray[indexPath.row]["retweet_count"] as! Int)
         cell.favoriteCountLabel.text = String(tweetArray[indexPath.row]["favorite_count"] as! Int)
-//        print(tweetArray[indexPath.row]["favorite_count"])
+        
+        let imageUrl = getImageUrl(tweet: tweetArray[indexPath.row])
+        print(imageUrl)
         let urlString = user["profile_image_url_https"] as! String
         let url = URL(string: urlString)
         cell.profileImage.af_setImage(withURL: url!)
@@ -154,6 +156,35 @@ class HomeTableViewController: UITableViewController {
         // preset alert
         self.present(alert, animated: true , completion: nil)
     }
+    
+    func getImageUrl(tweet: [String:Any]) -> String {
+    
+        let t = tweet
+
+        let entities = t["entities"] as! [String: Any]
+
+        let urls = (entities["urls"] as! [Any])
+
+        if urls.count > 0 {
+
+            let url1 = urls[0] as! [String: Any]
+            
+            //print(url1)
+            let urlString = url1["expanded_url"] as! String
+            
+            let imageUrl = URL(string: urlString)
+            
+//            print(urlString)
+//            print(String(urlString.prefix(5)))
+            
+            if String(urlString.prefix(5)) == "https" {
+                return urlString
+            }
+            //let request = URLRequest(url: imageUrl!)
+        }
+         return "_"
+    }
+        
     
     @IBAction func onLogOut(_ sender: UIBarButtonItem) {
         createAlertWithAction(title: "Would you like to Logout?")
