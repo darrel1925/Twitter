@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class TweetCell: UITableViewCell {
 
@@ -16,6 +17,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favoriteCountLabel: UILabel!
+    @IBOutlet weak var mediaWebView: WKWebView!
     
     
     override func awakeFromNib() {

@@ -100,8 +100,15 @@ class HomeTableViewController: UITableViewController {
         cell.retweetCountLabel.text = String(tweetArray[indexPath.row]["retweet_count"] as! Int)
         cell.favoriteCountLabel.text = String(tweetArray[indexPath.row]["favorite_count"] as! Int)
         
-        let imageUrl = getImageUrl(tweet: tweetArray[indexPath.row])
-        print(imageUrl)
+        let imageUrlString = getImageUrl(tweet: tweetArray[indexPath.row])
+        print(imageUrlString)
+        if imageUrlString != "_"{
+            let imageUrl = URL(string: imageUrlString)
+            let request = URLRequest(url: imageUrl!)
+            cell.mediaWebView.load(request)
+            
+        }
+        //print(imageUrl)
         let urlString = user["profile_image_url_https"] as! String
         let url = URL(string: urlString)
         cell.profileImage.af_setImage(withURL: url!)
