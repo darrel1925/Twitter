@@ -30,39 +30,12 @@ class HomeTableViewController: UITableViewController {
     @objc func loadTweets() {
         let tweetsURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets = 20
-//        let title = "Tweets loaded"
-//        let message = "\(numberOfTweets!) tweets have been loaded"
+
         let myParams = ["count": numberOfTweets] as [String:Any]
         
         TwitterAPICaller.client?.getDictionariesRequest(url: tweetsURL, parameters: myParams, success: { (tweets: [NSDictionary]) in
             self.tweetArray = tweets as! [[String : Any]]
-            
-//            for tweet in self.tweetArray {
-//                let t = tweet
-//    //            let mediaDict = t["media"] as! [String: Any]
-////                print(self.tweetArray)
-////                print(self.tweetArray[15].keys)
-////                print("\n\n")
-////                print(t["entities"])
-//                let entities = t["entities"] as! [String: Any]
-////                print("\n\n")
-////                print(entities.keys)
-////                print(entities["urls"] as! NSArray)
-//                let urls = (entities["urls"] as! [Any])
-//                print(urls)
-//                if urls.count > 0 {
-//                    print("HERE")
-//                    print(urls[0])
-//                    let url1 = urls[0] as! [String: Any]
-//                    print(url1["display_url"] as? String)
-//                }
-//            }
-////            print(t["media"])
-//
-////            let displayUrl = mediaDict["display_url"]!
-////            print(displayUrl)
-////            self.createAlert(title: title, message: message)
-            
+     
             self.tableView.reloadData()
             self.myRefreshControl.endRefreshing()
         }, failure: { (Error) in
@@ -103,10 +76,14 @@ class HomeTableViewController: UITableViewController {
         let imageUrlString = getImageUrl(tweet: tweetArray[indexPath.row])
         print(imageUrlString)
         if imageUrlString != "_"{
+            cell.mediaWebView.isHidden = false
             let imageUrl = URL(string: imageUrlString)
             let request = URLRequest(url: imageUrl!)
             cell.mediaWebView.load(request)
             
+        } else {
+            
+            cell.mediaWebView.isHidden = true
         }
         //print(imageUrl)
         let urlString = user["profile_image_url_https"] as! String
@@ -176,18 +153,15 @@ class HomeTableViewController: UITableViewController {
 
             let url1 = urls[0] as! [String: Any]
             
-            //print(url1)
             let urlString = url1["expanded_url"] as! String
             
             let imageUrl = URL(string: urlString)
             
-//            print(urlString)
-//            print(String(urlString.prefix(5)))
+
             
             if String(urlString.prefix(5)) == "https" {
                 return urlString
             }
-            //let request = URLRequest(url: imageUrl!)
         }
          return "_"
     }
@@ -197,72 +171,3 @@ class HomeTableViewController: UITableViewController {
         createAlertWithAction(title: "Would you like to Logout?")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- // Override to support conditional editing of the table view.
- override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the specified item to be editable.
- return true
- }
- */
-
-/*
- // Override to support editing the table view.
- override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
- if editingStyle == .delete {
- // Delete the row from the data source
- tableView.deleteRows(at: [indexPath], with: .fade)
- } else if editingStyle == .insert {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
- 
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the item to be re-orderable.
- return true
- }
- */
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
-
