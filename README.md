@@ -19,8 +19,15 @@ The following **bonus** features are implemented:
 - [x] User can pull to refresh. (1pt)
 - [x] User can load past tweets infinitely. (2pts)
 
-## Video Walkthrough
+
+## Video Walkthrough #1
 
 Here's a walkthrough of implemented user stories:
 
 <img src="http://g.recordit.co/L5QlaQsk5X.gif" width=200> <img src='http://g.recordit.co/qLSuIMnGOg.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' /> 
+
+## Video Walkthrough #2
+
+Here's a walkthrough of implemented user stories:
+
+<img src="http://g.recordit.co/VDEiFAz3yj.gif" width=200> <img src='http://g.recordit.co/5903aXdAoI.gif' title='Video Walkthrough #2' width='200' alt='Video Walkthrough' /> 
