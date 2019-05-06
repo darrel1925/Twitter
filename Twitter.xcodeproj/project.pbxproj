@@ -17,6 +17,9 @@
 		ED998429226D7F49004BC7E4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED998428226D7F49004BC7E4 /* LoginViewController.swift */; };
 		ED99842B226D8FC5004BC7E4 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99842A226D8FC5004BC7E4 /* HomeTableViewController.swift */; };
 		ED99842D226DB099004BC7E4 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99842C226DB099004BC7E4 /* TweetCell.swift */; };
+		ED9DC2E82278C23D00BB7694 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC2E72278C23D00BB7694 /* Tweet.swift */; };
+		EDB38514227BECF1001EEFB5 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB38513227BECF1001EEFB5 /* TweetViewController.swift */; };
+		EDB72320227844380076D4A3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7231F227844370076D4A3 /* VideoPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		ED998428226D7F49004BC7E4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Twitter/Controllers/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		ED99842A226D8FC5004BC7E4 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		ED99842C226DB099004BC7E4 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		ED9DC2E72278C23D00BB7694 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		EDB38513227BECF1001EEFB5 /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
+		EDB7231F227844370076D4A3 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		6EBCF52421DF07FC00451C03 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				ED9DC2E62278C23000BB7694 /* Models */,
+				EDB7231E2277E47F0076D4A3 /* Enum */,
 				6EBCF53121DF07FE00451C03 /* Info.plist */,
 				ED998427226D7EAF004BC7E4 /* Storyboards */,
 				ED998426226D7EA7004BC7E4 /* Helpers */,
@@ -108,6 +116,8 @@
 		ED998425226D7E9D004BC7E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EDB38513227BECF1001EEFB5 /* TweetViewController.swift */,
+				EDB7231F227844370076D4A3 /* VideoPlayerViewController.swift */,
 				ED99842A226D8FC5004BC7E4 /* HomeTableViewController.swift */,
 				ED998428226D7F49004BC7E4 /* LoginViewController.swift */,
 			);
@@ -131,6 +141,21 @@
 				6EBCF52921DF07FC00451C03 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		ED9DC2E62278C23000BB7694 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED9DC2E72278C23D00BB7694 /* Tweet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EDB7231E2277E47F0076D4A3 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +278,10 @@
 			files = (
 				ED99842B226D8FC5004BC7E4 /* HomeTableViewController.swift in Sources */,
 				ED998429226D7F49004BC7E4 /* LoginViewController.swift in Sources */,
+				ED9DC2E82278C23D00BB7694 /* Tweet.swift in Sources */,
 				ED99842D226DB099004BC7E4 /* TweetCell.swift in Sources */,
+				EDB38514227BECF1001EEFB5 /* TweetViewController.swift in Sources */,
+				EDB72320227844380076D4A3 /* VideoPlayerViewController.swift in Sources */,
 				6EBCF54421E047A500451C03 /* TwitterAPICaller.swift in Sources */,
 				6EBCF52621DF07FC00451C03 /* AppDelegate.swift in Sources */,
 			);
